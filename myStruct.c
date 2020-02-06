@@ -1,7 +1,6 @@
 #include <stdio.h>
-/* Construir um objeto contendo um atributo e duas funções (set/get) */
 
-/* 1) Definir a estrutura do objeto */
+/* Step 1 */
 
 typedef struct {
 	char value;
@@ -9,12 +8,12 @@ typedef struct {
 	char (*get)(void);
 } t_myStruct;
 
-/* 2) Definir protótipos dos métodos */
+/* Step 2 */
 
 void __myStruct_set__ (t_myStruct *self, char val);
 char __myStruct_get__ (t_myStruct *self);
 
-/* 3) Definir a macro de criação dos métodos (protótipo, definição e função) */
+/* Step 3 */
 
 #define __MYSTRUCT_SET__(SELF) \
 \
@@ -23,8 +22,7 @@ char __myStruct_get__ (t_myStruct *self);
 	} \
 	SELF.set = __myStruct_set__##SELF;
 
-/*------------------------------------------------------*/
-	
+
 #define __MYSTRUCT_GET__(SELF) \
 \
 	char __myStruct_get__##SELF (void) { \
@@ -32,7 +30,7 @@ char __myStruct_get__ (t_myStruct *self);
 	} \
 	SELF.get = __myStruct_get__##SELF;
 
-/* 4) Definir a função construtora */
+/* Step 4 */
 
 #define new_myStruct(OBJECT, VALUE) \
 \
@@ -40,6 +38,8 @@ char __myStruct_get__ (t_myStruct *self);
 	OBJECT.value = VALUE; \
 	__MYSTRUCT_SET__(OBJECT); \
 	__MYSTRUCT_GET__(OBJECT); \
+
+/* Step 5 */
 
 void __myStruct_set__ (t_myStruct *self, char val) {
 	self->value = val;
@@ -49,9 +49,10 @@ char __myStruct_get__ (t_myStruct *self) {
 	return self->value;
 }
 
+/* Testing */
+
 void main() {
 
-	/* testando */
 	printf("----------------------------------\n");
 	printf("new_myStruct(x, 'X');\n\nnew_myStruct(y, 'Y');\n\n");
 	new_myStruct(x, 'X');
@@ -67,17 +68,11 @@ void main() {
 
 	printf("----------------------------------\n");
 	printf("x.get();\n\t->'%c'\n\ny.get();\n\t->'%c'\n\n", x.get(), y.get());
-
 	
 }
 
-
-
 /*
-new_uigtk(x);
-x.load("file.ui");
-x.handler(F_UIGTK(gtk_main_quit));
-x.builder();
-x.window();
-x.main()
+To compile in GCC and run on linux
+	gcc -o myStruct myStruct.c
+	./myStruct
 */

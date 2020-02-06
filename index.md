@@ -216,6 +216,12 @@ y.get();
 
 See the [sample source](https://wdonadelli.github.io/ObjectLikeStruct/myStruct.c) code posted in the repository.
 
+To compile in GCC and run on linux do:
+
+```sh
+gcc -o myStruct myStruct.c
+./myStruct
+```
 
 ## Author
 
