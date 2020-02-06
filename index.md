@@ -137,5 +137,85 @@ char __myStruct_get__var () {
 var.get = __myStruct_get__var;
 ```
 
+## Step 5: defining prototype actions
 
+The prototypes, when accessing the structure by the `self` argument, will be obtaining the address for the structure, so you must use the correct way to access it, that is, using the `->` format.
 
+### Defining the "__myStruct_set__" function
+
+```c
+void __myStruct_set__ (t_myStruct *self, char val)
+{
+	self->value = val;
+}
+```
+
+### Defining the "__myStruct_get__" function
+
+```c
+char __myStruct_get__ (t_myStruct *self)
+{
+	return self->value;
+}
+```
+
+## Testing
+
+Testing
+
+When compiling and executing the commands below, ...
+
+```c
+void main()
+{
+
+	printf("----------------------------------\n");
+	printf("new_myStruct(x, 'X');\n\nnew_myStruct(y, 'Y');\n\n");
+	new_myStruct(x, 'X');
+	new_myStruct(y, 'Y');
+
+	printf("----------------------------------\n");
+	printf("x.get();\n\t->'%c'\n\ny.get();\n\t->'%c'\n\n", x.get(), y.get());
+
+	printf("----------------------------------\n");
+	printf("x.set('r');\n\ny.set('p');\n\n");
+	x.set('r');
+	y.set('p');
+
+	printf("----------------------------------\n");
+	printf("x.get();\n\t->'%c'\n\ny.get();\n\t->'%c'\n\n", x.get(), y.get());
+	
+}
+```
+
+...the following result should be displayed on the screen:
+
+```
+----------------------------------
+new_myStruct(x, 'X');
+
+new_myStruct(y, 'Y');
+
+----------------------------------
+x.get();
+	->'X'
+
+y.get();
+	->'Y'
+
+----------------------------------
+x.set('r');
+
+y.set('p');
+
+----------------------------------
+x.get();
+	->'r'
+
+y.get();
+	->'p'
+```
+
+## Author
+
+- Willian Donadelli (<wdonadelli@gmail.com>)
