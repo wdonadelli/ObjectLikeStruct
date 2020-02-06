@@ -141,7 +141,7 @@ var.get = __myStruct_get__var;
 
 The prototypes, when accessing the structure by the `self` argument, will be obtaining the address for the structure, so you must use the correct way to access it, that is, using the `->` format.
 
-### Defining the "__myStruct_set__" function
+### Defining the `__myStruct_set__` function
 
 ```c
 void __myStruct_set__ (t_myStruct *self, char val)
@@ -150,7 +150,7 @@ void __myStruct_set__ (t_myStruct *self, char val)
 }
 ```
 
-### Defining the "__myStruct_get__" function
+### Defining the `__myStruct_get__` function
 
 ```c
 char __myStruct_get__ (t_myStruct *self)
