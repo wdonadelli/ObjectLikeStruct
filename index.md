@@ -161,8 +161,6 @@ char __myStruct_get__ (t_myStruct *self)
 
 ## Testing
 
-Testing
-
 When compiling and executing the commands below, ...
 
 ```c
