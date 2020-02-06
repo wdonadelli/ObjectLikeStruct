@@ -216,6 +216,9 @@ y.get();
 	->'p'
 ```
 
+See the [sample source](https://wdonadelli.github.io/ObjectLikeStruct/myStruct.c) code posted in the repository.
+
+
 ## Author
 
 - Willian Donadelli (<wdonadelli@gmail.com>)
