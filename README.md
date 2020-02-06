@@ -4,7 +4,7 @@ The present method describes how to use the data type `struct` of the C language
 
 This method has been tested with the `gcc` compiler version (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0.
 
-To exemplify the creation of such structures, an object will be built containing an attribute, which will contain `char` type information, and two methods, one to define the argument and the other to obtain it. When building this structure, it will be allowed to enter an initial value for the attribute.
+To exemplify the creation of such structures, an object will be built containing an attribute, which will contain `char` type information, and two methods, one to define the attribute and the other to obtain it. When building this structure, it will be allowed to enter an initial value for the attribute.
 
 ## Step 1: define the structure
 
@@ -12,7 +12,7 @@ The structure will be called `t_myStruct` and will have the following organizati
 
 1. The `value` attribute will be used to store the character that will be defined in the construction of the structure and by the `set` method;
 2. The `set` method will store a pointer to a function that will set the value of the `value` argument; and
-3. The `get` method will store a pointer to a function that will get the value from the `value` argument;.
+3. The `get` method will store a pointer to a function that will get the value from the `value` argument.
 
 The structure will look like this:
 
@@ -94,7 +94,7 @@ The macro to define the constructor of the `get` method will look like this:
 
 ## Step 4: defining the structure builder
 
-The name of the constructor will be `new_myStruct` and will take as an argument the variable that will be assigned to the structure and other arguments that will define the initial values, if any. In the example discussed here, you will receive the initial value of the `value` attribute.
+The name of the constructor will be `new_myStruct` and will take as an argument the variable that will be assigned to the structure and other arguments that will define the initial values, if any. In the example discussed here, the constructor will receive the initial value of the `value` attribute.
 
 The construction macro will link the variable to the structure type, define the initial values ​​of the attributes and link the methods to the addresses of their respective builders.
 
@@ -161,8 +161,6 @@ char __myStruct_get__ (t_myStruct *self)
 
 ## Testing
 
-Testing
-
 When compiling and executing the commands below, ...
 
 ```c
@@ -214,6 +212,15 @@ x.get();
 
 y.get();
 	->'p'
+```
+
+See the [sample source](https://wdonadelli.github.io/ObjectLikeStruct/myStruct.c) code posted in the repository.
+
+To compile in GCC and run on linux do:
+
+```sh
+gcc -o myStruct myStruct.c
+./myStruct
 ```
 
 ## Author
